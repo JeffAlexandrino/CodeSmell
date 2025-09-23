@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Code Smell</title>
+    <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+    <h1>Code Smell</h1>
+
+    <h2>O que é code smell?</h2>
+    <p>
+        Code Smell é um termo usado para descrever indícios de problemas no código que, embora não quebrem sua funcionalidade, indicam possíveis falhas de design ou má prática de programação. Esses "cheiros" sugerem que o código pode se tornar difícil de manter, entender ou expandir no futuro.
+    </p>
+
+    <h2>Consequências do Code Smell</h2>
+    <ul>
+        <li>Dificuldade de manutenção e evolução do código.</li>
+        <li>Maior chance de introdução de bugs ao alterar funcionalidades.</li>
+        <li>Dificuldade de entendimento por outros desenvolvedores.</li>
+        <li>Baixa reutilização de código.</li>
+        <li>Comprometimento da performance em alguns casos.</li>
+    </ul>
+
+    <h2>Exemplo de Code Smell e Como Resolver</h2>
+
+    <p class="code-title">Código com Code Smell -> Cadeia de mensagens:</p>
+    <p>
+        Message Chain (Cadeia de mensagens) é um code smell onde um objeto acessa membros internos de outro objeto em cadeia. Isso cria dependência excessiva na estrutura interna de outros objetos, tornando o sistema mais frágil e difícil de manter.
+        A solução geralmente é encapsular as chamadas e oferecer métodos mais diretos no objeto principal.
+    </p>
+    <pre><code>// Código com acoplamento em cadeia
+let cidade = pedido.getCliente().getEndereco().getCidade();
+    </code></pre>
+
+    <p class="code-title">Código refatorado (quebrando a cadeia):</p>
+    <pre><code>// Melhor: o objeto pedido expõe diretamente o que é necessário
+let cidade = pedido.getCidadeDoCliente();
+    </code></pre>
+
+    <h2>Carta: Code Smell</h2>
+    <div class="img-container">
+        <img src="magicCard.jpg" alt="Carta Code Smell" class="card-img" />
+    </div>
+
+</body>
+<footer>
+    <div class="footer-content">
+        Desenvolvido por <a href="https://github.com/JeffAlexandrino" target="_blank" rel="noopener noreferrer">Jefferson Alexandrino</a> e <a href="https://github.com/GabrielAKaufmann" target="_blank" rel="noopener noreferrer">Gabriel Angelo</a> © 2025
+    </div>
+</footer>
+</html>
